@@ -1,5 +1,5 @@
 ﻿using System;
-using Board;
+using board;
 
 namespace Chess_Console
 {
@@ -7,12 +7,9 @@ namespace Chess_Console
     {
         static void Main(string[] args)
         {
-            Position P;
+            Board board = new Board(8, 8);
 
-            P = new Position(3, 4);
-
-            Console.WriteLine("Position: " + P);
-            Console.WriteLine();
+            Console.WriteLine(board);
         }
     }
 }
