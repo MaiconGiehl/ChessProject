@@ -1,7 +1,6 @@
 ﻿using System;
 using board;
 
-
 namespace Chess_Console
 {
     internal class Screen
@@ -13,14 +12,14 @@ namespace Chess_Console
 
                 for (int c = 0; c < board.Columns; c++)
                 {
-                    if (board.piece(l, c) == null)
+                    if (board.Piece(l, c) == null)
                     {
                         Console.Write("- ");
 
                     }
                     else
                     {
-                        Console.Write(board.piece(l, c) + "-");
+                        Console.Write(board.Piece(l, c) + "-");
                     }
                 }
                 Console.WriteLine();

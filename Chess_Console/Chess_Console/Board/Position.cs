@@ -5,7 +5,7 @@
         public int Line { get; set; }
         public int Column { get; set; }
 
-        public Position (int line, int column)
+        public Position(int line, int column)
         {
             this.Line = line;
             this.Column = column;
