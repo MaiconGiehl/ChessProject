@@ -9,7 +9,8 @@ namespace Chess_Console
         {
             Board board = new Board(8, 8);
 
-            Console.WriteLine(board);
+            Screen.BoardPrint(board);
+
         }
     }
 }
