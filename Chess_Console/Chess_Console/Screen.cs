@@ -12,14 +12,14 @@ namespace Chess_Console
 
                 for (int c = 0; c < board.Columns; c++)
                 {
-                    if (board.Piece(l, c) == null)
+                    if (board.piece(l, c) == null)
                     {
                         Console.Write("- ");
 
                     }
                     else
                     {
-                        Console.Write(board.Piece(l, c) + "-");
+                        Console.Write(board.piece(l, c) + "-");
                     }
                 }
                 Console.WriteLine();
