@@ -21,10 +21,16 @@ namespace Chess_Console
                     Console.Write("Origin: ");
                     Position origin = Screen.ReadPosition().ToPosition();
 
+                    bool[,] possiblePositions = match.board.piece(origin).ValidMovements();
+
+                    Console.Clear();
+                    Screen.BoardPrint(match.board, possiblePositions);
+
                     Console.Write("Destiny: ");
                     Position destiny = Screen.ReadPosition().ToPosition();
                     match.DoMovement(origin, destiny);
                 }
+
 
             }
             catch (BoardException e)
