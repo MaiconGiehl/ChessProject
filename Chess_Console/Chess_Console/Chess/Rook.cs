@@ -20,15 +20,14 @@ namespace Chess
 
         public override bool[,] ValidMovements()
         {
-            bool[,] validMovement = new bool[Board.Lines, Board.Columns];
+            bool[,] validMoves = new bool[Board.Lines, Board.Columns];
 
             Position pos = new Position(0, 0);
-
-            // North
+            // acima
             pos.SetValues(Position.Line - 1, Position.Column);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
-                validMovement[pos.Line, pos.Column] = true;
+                validMoves[pos.Line, pos.Column] = true;
                 if (Board.piece(pos) != null && Board.piece(pos).Color != Color)
                 {
                     break;
@@ -36,11 +35,11 @@ namespace Chess
                 pos.Line = pos.Line - 1;
             }
 
-            // South
-            pos.SetValues(Position.Line - 1, Position.Column);
+            // abaixo
+            pos.SetValues(Position.Line + 1, Position.Column);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
-                validMovement[pos.Line, pos.Column] = true;
+                validMoves[pos.Line, pos.Column] = true;
                 if (Board.piece(pos) != null && Board.piece(pos).Color != Color)
                 {
                     break;
@@ -48,11 +47,11 @@ namespace Chess
                 pos.Line = pos.Line + 1;
             }
 
-            // East
-            pos.SetValues(Position.Line - 1, Position.Column);
+            // direita
+            pos.SetValues(Position.Line, pos.Column + 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
-                validMovement[pos.Line, pos.Column] = true;
+                validMoves[pos.Line, pos.Column] = true;
                 if (Board.piece(pos) != null && Board.piece(pos).Color != Color)
                 {
                     break;
@@ -60,11 +59,11 @@ namespace Chess
                 pos.Column = pos.Column + 1;
             }
 
-            // West
-            pos.SetValues(Position.Line - 1, Position.Column);
+            // esquerda
+            pos.SetValues(Position.Line, Position.Column - 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
-                validMovement[pos.Line, pos.Column] = true;
+                validMoves[Position.Line, pos.Column] = true;
                 if (Board.piece(pos) != null && Board.piece(pos).Color != Color)
                 {
                     break;
@@ -72,7 +71,7 @@ namespace Chess
                 pos.Column = pos.Column - 1;
             }
 
-            return validMovement;
+            return validMoves;
         }
 
     }
