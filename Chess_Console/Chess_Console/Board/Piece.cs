@@ -35,6 +35,11 @@
             }
             return false;
         }
+
+        public bool canMoveTo (Position pos)
+        {
+            return ValidMovements()[pos.Line, pos.Column];
+        }
         public abstract bool[,] ValidMovements();
     }
 }

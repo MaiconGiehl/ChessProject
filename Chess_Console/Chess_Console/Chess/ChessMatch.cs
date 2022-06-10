@@ -49,6 +49,13 @@ namespace Chess
             }
         }
 
+        public void DestinyValidate (Position origin, Position destiny)
+        {
+            if(!Board.piece(origin).canMoveTo(destiny))
+            {
+                throw new BoardException("Invalid destiny position!");
+            }
+        }
         public void ChangePlayer ()
         {
             if (CurrentPlayer == Color.White)

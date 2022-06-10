@@ -22,8 +22,8 @@ namespace Chess_Console
                         Console.WriteLine("Shift: " + match.Shift);
                         Console.WriteLine("Waiting for: " + match.CurrentPlayer);
 
-
                         Console.WriteLine();
+
                         Console.Write("Origin: ");
                         Position origin = Screen.ReadPosition().ToPosition();
                         match.OriginValidate(origin);
@@ -36,6 +36,8 @@ namespace Chess_Console
                         Console.WriteLine();
                         Console.Write("Destiny: ");
                         Position destiny = Screen.ReadPosition().ToPosition();
+                        match.DestinyValidate(origin, destiny);
+
                         match.MakeMove(origin, destiny);
                     }
                     catch (BoardException e)
