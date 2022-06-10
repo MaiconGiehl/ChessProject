@@ -20,6 +20,21 @@
             MovQuantity++;
         }
 
+        public bool DoMovesExist ()
+        {
+            bool[,] mat = ValidMovements();
+            for (int i = 0; i < Board.Lines; i++)
+            {
+                for (int j = 0; j < Board.Columns; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         public abstract bool[,] ValidMovements();
     }
 }
