@@ -1,11 +1,48 @@
 ﻿using System;
 using board;
 using Chess;
+using System.Collections.Generic;
+
 
 namespace Chess_Console
 {
     internal class Screen
     {
+        public static void MatchPrint(ChessMatch match)
+        {
+            BoardPrint(match.Board);
+            Console.WriteLine();
+            CapturedPiecesPrint(match);
+            Console.WriteLine();
+            Console.WriteLine("Shift: " + match.Shift);
+            Console.WriteLine("Waiting for: " + match.CurrentPlayer);
+        }
+
+        public static void CapturedPiecesPrint(ChessMatch match)
+        {
+            Console.WriteLine("Captured pieces: ");
+            Console.Write("White: ");
+            SetPrint(match.CapturedPieces(Color.White));
+
+            Console.WriteLine();
+
+            Console.Write("Black: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            SetPrint(match.CapturedPieces(Color.Black));
+            Console.ForegroundColor = aux;
+            Console.WriteLine();
+        }
+
+        public static void SetPrint(HashSet<Piece> set)
+        {
+            Console.Write("[");
+            foreach (Piece p in set)
+            {
+                Console.Write(p + " ");
+            }
+            Console.Write("]");
+        }
         public static void BoardPrint(Board board)
         {
             for (int l = 0; l < board.Lines; l++)
@@ -28,7 +65,7 @@ namespace Chess_Console
                 Console.Write(8 - l + " ");
                 for (int c = 0; c < board.Columns; c++)
                 {
-                    if(possiblePositions[l, c])
+                    if (possiblePositions[l, c])
                     {
                         Console.BackgroundColor = modifiedBgColor;
                     }

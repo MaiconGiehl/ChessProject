@@ -17,13 +17,10 @@ namespace Chess_Console
                     try
                     {
                         Console.Clear();
-                        Screen.BoardPrint(match.Board);
-                        Console.WriteLine();
-                        Console.WriteLine("Shift: " + match.Shift);
-                        Console.WriteLine("Waiting for: " + match.CurrentPlayer);
+                        Screen.MatchPrint(match);
+
 
                         Console.WriteLine();
-
                         Console.Write("Origin: ");
                         Position origin = Screen.ReadPosition().ToPosition();
                         match.OriginValidate(origin);
@@ -46,14 +43,11 @@ namespace Chess_Console
                         Console.ReadLine();
                     }
                 }
-
-
             }
             catch (BoardException e)
             {
                 Console.WriteLine(e.Message);
             }
-
         }
     }
 }
