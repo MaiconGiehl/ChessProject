@@ -19,8 +19,12 @@
         {
             MovQuantity++;
         }
+        public void DescreaseMovQty()
+        {
+            MovQuantity--;
+        }
 
-        public bool DoMovesExist ()
+        public bool DoMovesExist()
         {
             bool[,] mat = ValidMovements();
             for (int i = 0; i < Board.Lines; i++)
@@ -36,7 +40,7 @@
             return false;
         }
 
-        public bool canMoveTo (Position pos)
+        public bool canMoveTo(Position pos)
         {
             return ValidMovements()[pos.Line, pos.Column];
         }
