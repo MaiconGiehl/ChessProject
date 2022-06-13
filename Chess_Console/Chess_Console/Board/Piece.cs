@@ -40,7 +40,7 @@
             return false;
         }
 
-        public bool canMoveTo(Position pos)
+        public bool PossibleMovement(Position pos)
         {
             return ValidMovements()[pos.Line, pos.Column];
         }

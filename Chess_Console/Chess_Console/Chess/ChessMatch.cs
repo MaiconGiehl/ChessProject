@@ -101,7 +101,7 @@ namespace Chess
 
         public void DestinyValidate(Position origin, Position destiny)
         {
-            if (!Board.piece(origin).canMoveTo(destiny))
+            if (!Board.piece(origin).PossibleMovement(destiny))
             {
                 throw new BoardException("Invalid destiny position!");
             }
