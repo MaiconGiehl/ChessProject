@@ -4,14 +4,14 @@ namespace Chess
 {
     internal class King : Piece
     {
-        public King(Board board, Color color) : base (board, color)
+        public King(Board board, Color color) : base(board, color)
         {
         }
         public override string ToString()
         {
             return "K";
         }
-        private bool CanMove (Position pos)
+        private bool CanMove(Position pos)
         {
             Piece p = Board.piece(pos);
             return p == null || p.Color != Color;
@@ -19,7 +19,7 @@ namespace Chess
 
         public override bool[,] ValidMovements()
         {
-           bool[,] validMovement = new bool[Board.Lines, Board.Columns];
+            bool[,] validMovement = new bool[Board.Lines, Board.Columns];
 
             Position pos = new Position(0, 0);
 
@@ -36,7 +36,7 @@ namespace Chess
             {
                 validMovement[pos.Line, pos.Column] = true;
             }
-            
+
             // East
             pos.SetValues(Position.Line, Position.Column + 1);
             if (Board.ValidPosition(pos) && CanMove(pos))
@@ -52,7 +52,7 @@ namespace Chess
             }
 
             // South
-            pos.SetValues(Position.Line + 1, Position.Column );
+            pos.SetValues(Position.Line + 1, Position.Column);
             if (Board.ValidPosition(pos) && CanMove(pos))
             {
                 validMovement[pos.Line, pos.Column] = true;
@@ -64,7 +64,7 @@ namespace Chess
             {
                 validMovement[pos.Line, pos.Column] = true;
             }
-            
+
             // West
             pos.SetValues(Position.Line, Position.Column - 1);
             if (Board.ValidPosition(pos) && CanMove(pos))

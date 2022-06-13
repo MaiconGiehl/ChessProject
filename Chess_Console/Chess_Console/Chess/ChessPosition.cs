@@ -13,7 +13,7 @@ internal class ChessPosition
         Line = line;
     }
 
-    public Position ToPosition ()
+    public Position ToPosition()
     {
         return new Position(8 - Line, Column - 'a');
     }

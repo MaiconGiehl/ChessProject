@@ -13,13 +13,14 @@ namespace Chess
         private HashSet<Piece> Pieces;
 
         private HashSet<Piece> Captured;
-        public bool check { get; private set; }
+        public bool Check { get; private set; }
         public ChessMatch()
         {
             Board = new Board(8, 8);
             Shift = 1;
             CurrentPlayer = Color.White;
             Finished = false;
+            Check = false;
             Pieces = new HashSet<Piece>();
             Captured = new HashSet<Piece>();
             PutPieces();
@@ -63,11 +64,11 @@ namespace Chess
 
             if (IsInCheck(Adversary(CurrentPlayer)))
             {
-                check = true;
+                Check = true;
             }
             else
             {
-                check = false;
+                Check = false;
             }
             Shift++;
             ChangePlayer();
@@ -124,7 +125,7 @@ namespace Chess
         public HashSet<Piece> PiecesInGame(Color color)
         {
             HashSet<Piece> aux = new HashSet<Piece>();
-            foreach (Piece x in Captured)
+            foreach (Piece x in Pieces)
             {
                 if (x.Color == color)
                 {
