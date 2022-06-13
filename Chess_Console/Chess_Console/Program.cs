@@ -43,6 +43,8 @@ namespace Chess_Console
                         Console.ReadLine();
                     }
                 }
+                Console.Clear();
+                Screen.MatchPrint(match);
             }
             catch (BoardException e)
             {
