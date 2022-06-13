@@ -225,13 +225,15 @@ namespace Chess
         }
         private void PutPieces()
         {
-            PutNewPiece('c', 1, new Rook(Board, Color.White));
-            PutNewPiece('d', 1, new King(Board, Color.White));
-            PutNewPiece('h', 7, new Rook(Board, Color.White));
- 
-
+            PutNewPiece('a', 1, new King(Board, Color.White));
             PutNewPiece('a', 8, new King(Board, Color.Black));
-            PutNewPiece('b', 8, new Rook(Board, Color.Black));
+
+
+            PutNewPiece('d', 4, new Knight(Board, Color.White));
+            PutNewPiece('e', 4, new Bishop(Board, Color.White));
+
+            PutNewPiece('d', 5, new Knight(Board, Color.Black));
+            PutNewPiece('e', 5, new Bishop(Board, Color.Black));
         }
     }
 }
