@@ -229,11 +229,17 @@ namespace Chess
             PutNewPiece('a', 8, new King(Board, Color.Black));
 
 
-            PutNewPiece('d', 4, new Knight(Board, Color.White));
-            PutNewPiece('e', 4, new Bishop(Board, Color.White));
+            PutNewPiece('d', 7, new Pawn(Board, Color.Black));
+            PutNewPiece('e', 7, new Pawn(Board, Color.Black));
 
-            PutNewPiece('d', 5, new Knight(Board, Color.Black));
-            PutNewPiece('e', 5, new Bishop(Board, Color.Black));
+            PutNewPiece('d', 2, new Pawn(Board, Color.White));
+            PutNewPiece('e', 2, new Pawn(Board, Color.White));
+
+
+            PutNewPiece('h', 8, new Queen(Board, Color.Black));
+            PutNewPiece('h', 1, new Queen(Board, Color.White));
+
+            
         }
     }
 }
