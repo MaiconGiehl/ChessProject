@@ -19,7 +19,7 @@
         {
             MovQuantity++;
         }
-        public void DescreaseMovQty()
+        public void DecreaseMovQty()
         {
             MovQuantity--;
         }

@@ -37,19 +37,62 @@ namespace Chess
             {
                 Captured.Add(capturedPiece);
             }
+
+            // Especial Moves
+            // Short Castling
+            if (p is King && destiny.Column == origin.Column + 2)
+            {
+                Position rOrigin = new Position(origin.Line, origin.Column + 3);
+                Position rDestiny = new Position(origin.Line, origin.Column + 1);
+                Piece R = Board.RemovePiece(origin);
+                R.IncreaseMovQty();
+                Board.PutPiece(R, rDestiny);
+            }
+
+            // Long Castling
+            if (p is King && destiny.Column == origin.Column - 2)
+            {
+                Position rOrigin = new Position(origin.Line, origin.Column - 4);
+                Position rDestiny = new Position(origin.Line, origin.Column - 1);
+                Piece R = Board.RemovePiece(origin);
+                R.IncreaseMovQty();
+                Board.PutPiece(R, rDestiny);
+            }
+
             return capturedPiece;
         }
 
         public void UndoMove(Position origin, Position destiny, Piece capturedPiece)
         {
             Piece p = Board.RemovePiece(destiny);
-            p.DescreaseMovQty();
+            p.DecreaseMovQty();
             if (capturedPiece != null)
             {
                 Board.PutPiece(capturedPiece, destiny);
                 Captured.Remove(capturedPiece);
             }
             Board.PutPiece(p, origin);
+
+            // Especial Moves
+            // Short Castling
+            if (p is King && destiny.Column == origin.Column + 2)
+            {
+                Position rOrigin = new Position(origin.Line, origin.Column + 3);
+                Position rDestiny = new Position(origin.Line, origin.Column + 1);
+                Piece R = Board.RemovePiece(rDestiny);
+                R.DecreaseMovQty();
+                Board.PutPiece(R, rOrigin);
+            }
+
+            // Long Castling
+            if (p is King && destiny.Column == origin.Column - 2)
+            {
+                Position rOrigin = new Position(origin.Line, origin.Column - 4);
+                Position rDestiny = new Position(origin.Line, origin.Column - 1);
+                Piece R = Board.RemovePiece(origin);
+                R.DecreaseMovQty();
+                Board.PutPiece(R, rOrigin);
+            }
         }
 
         public void MakeMove(Position origin, Position destiny)
@@ -230,7 +273,7 @@ namespace Chess
             PutNewPiece('b', 1, new Knight(Board, Color.White));
             PutNewPiece('c', 1, new Bishop(Board, Color.White));
             PutNewPiece('d', 1, new Queen(Board, Color.White));
-            PutNewPiece('e', 1, new King(Board, Color.White));
+            PutNewPiece('e', 1, new King(Board, Color.White, this));
             PutNewPiece('f', 1, new Bishop(Board, Color.White));
             PutNewPiece('g', 1, new Knight(Board, Color.White));
             PutNewPiece('h', 1, new Rook(Board, Color.White));
@@ -250,7 +293,7 @@ namespace Chess
             PutNewPiece('b', 8, new Knight(Board, Color.Black));
             PutNewPiece('c', 8, new Bishop(Board, Color.Black));
             PutNewPiece('d', 8, new Queen(Board, Color.Black));
-            PutNewPiece('e', 8, new King(Board, Color.Black));
+            PutNewPiece('e', 8, new King(Board, Color.Black, this));
             PutNewPiece('f', 8, new Bishop(Board, Color.Black));
             PutNewPiece('g', 8, new Knight(Board, Color.Black));
             PutNewPiece('h', 8, new Rook(Board, Color.Black));
